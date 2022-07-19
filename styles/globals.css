@@ -14,3 +14,7 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.p-radiobutton-checked {
+  background-color: #f5f5f5;
+}
