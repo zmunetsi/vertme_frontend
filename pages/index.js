@@ -101,7 +101,7 @@ const SignupForm = () => {
       <form id="signup-form" className="w-full" onSubmit={handleSignupForm}>
         <div className="text-center mb-5">
           <div className="text-900 text-3xl font-medium mb-3">Welcome Back</div>
-          <span className="text-600 font-medium line-height-3">Don't have an account?</span>
+          <span className="text-600 font-medium line-height-3">Don&apos;t have an account?</span>
           <a className="font-medium no-underline ml-2 text-blue-500 cursor-pointer">Create today!</a>
         </div>
 
@@ -209,7 +209,7 @@ const LoginForm = (props) => {
       <form id="login-form" className="w-full" onSubmit={handleLoginForm}>
         <div className="text-center mb-5">
           <div className="text-900 text-3xl font-medium mb-3">Welcome Back</div>
-          <span className="text-600 font-medium line-height-3">Don't have an account?</span>
+          <span className="text-600 font-medium line-height-3">Don&apos;t have an account?</span>
           <a className="font-medium no-underline ml-2 text-blue-500 cursor-pointer">Create today!</a>
         </div>
 

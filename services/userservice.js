@@ -3,7 +3,7 @@
 export async function getCurrentUser(token) {
 
     const user = await fetch(
-        'http://vertme.peoplecreate.co.za/api/user',
+        'https://vertme.peoplecreate.co.za/api/user',
         //'http://127.0.0.1:8000/api/user',
         {
             method: 'GET',
