@@ -5,7 +5,6 @@ import PageLayout from '../../components/page-layout'
 import QuestionService from '../../services/questionservice'
 import { Card } from 'primereact/card';
 import { Button } from 'primereact/button'
-import { RadioButton } from 'primereact/radiobutton'
 import { ProgressBar } from 'primereact/progressbar';
 
 export default function Questions(props) {
@@ -62,7 +61,7 @@ export default function Questions(props) {
             <ul>
               {questions.map(question => (
                 <div key={question.id}>
-                  <h5 class="text-2xl font-medium text-900 mb-3">{question.question}</h5>
+                  <h5 className="text-2xl font-medium text-900 mb-3">{question.question}</h5>
                   {
                     question.options.map(option => (
                       <div key={option.id} className="field-radiobutton font-medium text-500 mb-3">
