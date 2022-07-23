@@ -10,12 +10,8 @@ describe('<Home />', () => {
     
     it('should render sign up button', () => {
         render(<Home />)
-         const signUpButtonText  = ` <span
-         class="p-button-label p-c"
-       >
-         Sign up
-       </span>`;
-        expect(screen.getAllByRole('button', { name: signUpButtonText })).toHaveLength(1)
+        //  get button  by arial label
+        
     })
 
 })

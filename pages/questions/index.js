@@ -6,6 +6,7 @@ import QuestionService from '../../services/questionservice'
 import { Card } from 'primereact/card';
 import { Button } from 'primereact/button'
 import { RadioButton } from 'primereact/radiobutton'
+import { ProgressBar } from 'primereact/progressbar';
 
 export default function Questions(props) {
   const router = useRouter()
@@ -38,52 +39,64 @@ export default function Questions(props) {
 
   const handleSubmitAnswers = (e) => {
     e.preventDefault();
-   // console.log(assessment)
+    // console.log(assessment)
     questionService.trackAssessment(assessment, selectedOptions).then(res => {
-      if(res) {
-        if(res.data.status === 'success') {
-        // console.log(res.data)
+      if (res) {
+        if (res.data.status === 'success') {
+          // console.log(res.data)
           router.push({
-                   pathname :'/questions/assessment-result'
-                 })
-        
+            pathname: '/questions/assessment-result'
+          })
+
         }
-       // console.log(res.data)
+        // console.log(res.data)
       }
     })
   }
 
-  return (
-    <div className="grid grid-nogutter surface-0 text-800">
-      <form onSubmit={handleSubmitAnswers}>
-        <ul>
-          {questions.map(question => (
-            <div key={question.id}>
-              <h5>{question.question}</h5>
-              {
-                question.options.map(option => (
-                  <div key={option.id} className="field-radiobutton">
-                    <input className="p-radiobutton" type="radio" name={question.id} value={option.id} onChange={(e) => {
-                      setSelectedOption(e.target.value)
-                      // push to selectedOptions by question id
-                      setSelectedOptions(prev => {
-                        const newSelectedOptions = { ...prev }
-                        newSelectedOptions[question.id] = e.target.value
-                        return newSelectedOptions
-                      })
-                    }
-                    } />
-                    <label className="p-radiobutton-label" htmlFor={option.id}>{option.option}</label>
-                  </div>
-                ))
-              }
-            </div>
-          ))}
-        </ul>
-        <Button type="submit" label="Submit" icon="pi pi-check" className="p-button-success" />
-      </form>
-    </div>
-  )
+  if (questions.length > 0) {
+    return (
+      <div className="grid grid-nogutter surface-0 text-800">
+        <div className="col-6 col-md-6 surface-0 p-4 shadow-2 border-round m-auto my-4">
+          <form onSubmit={handleSubmitAnswers}>
+            <ul>
+              {questions.map(question => (
+                <div key={question.id}>
+                  <h5 class="text-2xl font-medium text-900 mb-3">{question.question}</h5>
+                  {
+                    question.options.map(option => (
+                      <div key={option.id} className="field-radiobutton font-medium text-500 mb-3">
+                        <input className="p-radiobutton" type="radio" name={question.id} value={option.id} onChange={(e) => {
+                          setSelectedOption(e.target.value)
+                          // push to selectedOptions by question id
+                          setSelectedOptions(prev => {
+                            const newSelectedOptions = { ...prev }
+                            newSelectedOptions[question.id] = e.target.value
+                            return newSelectedOptions
+                          })
+                        }
+                        } />
+                        <label className="p-radiobutton-label" htmlFor={option.id}>{option.option}</label>
+                      </div>
+                    ))
+                  }
+                </div>
+              ))}
+                    <hr/>
+            <Button type="submit" label="Submit" icon="pi pi-check" className="p-button-raised bg-orange-500 border-orange-500 text-white w-full" />
+            </ul>
+      
+          </form>
+        </div>
+      </div>
+    )
+  } else {
+    return (
+      <div>
+        <ProgressBar mode="indeterminate" style={{ height: '6px' }}></ProgressBar>
+      </div>
+    )
+  }
 }
 Questions.getLayout = function getLayout(page) {
   return (
