@@ -29,7 +29,7 @@ export default function AssessmentResult(props) {
             <div className="grid grid-nogutter surface-0 text-800">
                 <div className="col-6 col-md-6 surface-0 p-4 shadow-2 border-round m-auto my-4">
                     <section>
-                        <span className="block text-6xl font-bold mb-1">You score: {score}
+                        <span className="block text-6xl font-bold mb-1">Your score: {score}
                         </span>
                         <span className="block text-4xl font-bold mb-1">
                             {score > 0 ? 'You are   Extrovert' : ''}
